@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "MindShop",
+    "slug": "mindshop",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#fafaf9"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.hyperquake.mindshop"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#fafaf9"
+      },
+      "package": "com.hyperquake.mindshop"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
