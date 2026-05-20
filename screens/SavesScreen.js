@@ -7,6 +7,9 @@ import { colors, typography, radii } from '../constants/theme';
 import { SAMPLE_ITEMS, DEFAULT_LISTS } from '../data/sampleData';
 import ProductCard from '../components/ProductCard';
 import FilterPills from '../components/FilterPills';
+import PinModal from '../components/PinModal';
+import NewListModal from '../components/NewListModal';
+import ItemDetailModal from '../components/ItemDetailModal';
 
 export default function SavesScreen() {
   const [items, setItems] = useState(SAMPLE_ITEMS);
@@ -18,6 +21,21 @@ export default function SavesScreen() {
 
   const filteredItems =
     activeList === 'All' ? items : items.filter((i) => i.list === activeList);
+
+  function handlePin(newItem) {
+    setItems((prev) => [newItem, ...prev]);
+  }
+
+  function handleCreateList({ name, symbol }) {
+    setLists((prev) => [...prev, name]);
+    setNewListModalVisible(false);
+  }
+
+  function handleSaveItem(id, updates) {
+    setItems((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, ...updates } : item))
+    );
+  }
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -64,6 +82,30 @@ export default function SavesScreen() {
           ))}
         </ScrollView>
       )}
+
+      {/* Modals */}
+      <PinModal
+        visible={pinModalVisible}
+        lists={lists}
+        onClose={() => setPinModalVisible(false)}
+        onPin={handlePin}
+        onAddList={() => {
+          setPinModalVisible(false);
+          setNewListModalVisible(true);
+        }}
+      />
+
+      <NewListModal
+        visible={newListModalVisible}
+        onClose={() => setNewListModalVisible(false)}
+        onCreate={handleCreateList}
+      />
+
+      <ItemDetailModal
+        item={selectedItem}
+        onClose={() => setSelectedItem(null)}
+        onSave={handleSaveItem}
+      />
     </SafeAreaView>
   );
 }

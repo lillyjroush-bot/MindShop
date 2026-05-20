@@ -1,13 +1,22 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import SavesScreen from './screens/SavesScreen';
 import ReviewScreen from './screens/ReviewScreen';
 import RecapScreen from './screens/RecapScreen';
+import SavesIcon from './components/icons/SavesIcon';
+import ReviewIcon from './components/icons/ReviewIcon';
+import RecapIcon from './components/icons/RecapIcon';
+import { colors } from './constants/theme';
 
 const Tab = createBottomTabNavigator();
+
+const ICONS = {
+  Saves:  SavesIcon,
+  Review: ReviewIcon,
+  Recap:  RecapIcon,
+};
 
 export default function App() {
   return (
@@ -17,27 +26,31 @@ export default function App() {
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarStyle: {
-            backgroundColor: '#ffffff',
-            borderTopColor: '#e8e5e1',
+            backgroundColor: colors.white,
+            borderTopColor: colors.gray2,
             borderTopWidth: 1,
-            height: 60,
-            paddingBottom: 8,
+            height: 62,
+            paddingBottom: 10,
             paddingTop: 8,
+            paddingHorizontal: 6,
           },
-          tabBarActiveTintColor: '#ffffff',
-          tabBarInactiveTintColor: '#b0a89e',
-          tabBarActiveBackgroundColor: '#111110',
-          tabBarInactiveBackgroundColor: '#ffffff',
+          tabBarActiveTintColor: colors.white,
+          tabBarInactiveTintColor: colors.gray3,
+          tabBarActiveBackgroundColor: colors.black,
+          tabBarInactiveBackgroundColor: colors.white,
           tabBarLabelStyle: {
             fontSize: 11,
             fontWeight: '600',
             letterSpacing: 0.2,
           },
-          tabBarIcon: () => null,
           tabBarItemStyle: {
-            borderRadius: 8,
-            marginHorizontal: 4,
-            marginVertical: 4,
+            borderRadius: 10,
+            marginHorizontal: 3,
+            marginVertical: 3,
+          },
+          tabBarIcon: ({ color, size }) => {
+            const Icon = ICONS[route.name];
+            return Icon ? <Icon color={color} size={20} /> : null;
           },
         })}
       >
