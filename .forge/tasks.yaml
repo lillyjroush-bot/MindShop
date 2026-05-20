@@ -142,10 +142,10 @@ tasks:
       - Header count updates when items are added/removed
     files_likely_affected:
       - screens/SavesScreen.js (update placeholder)
-    status: pending
-    started_at: null
-    completed_at: null
-    commit: null
+    status: done
+    started_at: "2026-05-20T00:35:00Z"
+    completed_at: "2026-05-20T00:45:00Z"
+    commit: 5e6bf33
     notes: []
 
   # ── Phase 3: Modals ────────────────────────────────────────────────────────
@@ -169,10 +169,10 @@ tasks:
       - Image URL field is optional — item still saves without it
     files_likely_affected:
       - components/PinModal.js (new)
-    status: pending
-    started_at: null
-    completed_at: null
-    commit: null
+    status: done
+    started_at: "2026-05-20T00:45:00Z"
+    completed_at: "2026-05-20T01:00:00Z"
+    commit: 53f90f4
     notes: []
 
   - id: T008
@@ -193,10 +193,10 @@ tasks:
       - Preview pill shows correct symbol and name in real time
     files_likely_affected:
       - components/NewListModal.js (new)
-    status: pending
-    started_at: null
-    completed_at: null
-    commit: null
+    status: done
+    started_at: "2026-05-20T00:45:00Z"
+    completed_at: "2026-05-20T01:00:00Z"
+    commit: 53f90f4
     notes: []
 
   - id: T009
@@ -218,10 +218,10 @@ tasks:
       - Notes saved and re-shown on next open
     files_likely_affected:
       - components/ItemDetailModal.js (new)
-    status: pending
-    started_at: null
-    completed_at: null
-    commit: null
+    status: done
+    started_at: "2026-05-20T00:45:00Z"
+    completed_at: "2026-05-20T01:00:00Z"
+    commit: 53f90f4
     notes: []
 
   # ── Phase 4: Review + Recap ────────────────────────────────────────────────
@@ -245,10 +245,10 @@ tasks:
       - Progress dots fill as each item is reviewed
     files_likely_affected:
       - screens/ReviewScreen.js (update placeholder)
-    status: pending
-    started_at: null
-    completed_at: null
-    commit: null
+    status: done
+    started_at: "2026-05-20T00:45:00Z"
+    completed_at: "2026-05-20T01:00:00Z"
+    commit: 53f90f4
     notes: []
 
   - id: T011
@@ -270,10 +270,10 @@ tasks:
       - By List totals match items in each list
     files_likely_affected:
       - screens/RecapScreen.js (update placeholder)
-    status: pending
-    started_at: null
-    completed_at: null
-    commit: null
+    status: done
+    started_at: "2026-05-20T00:45:00Z"
+    completed_at: "2026-05-20T01:00:00Z"
+    commit: 53f90f4
     notes: []
 
   # ── Phase 5: Polish ────────────────────────────────────────────────────────
@@ -297,8 +297,8 @@ tasks:
       - components/icons/SavesIcon.js (new)
       - components/icons/ReviewIcon.js (new)
       - components/icons/RecapIcon.js (new)
-    status: pending
-    started_at: null
-    completed_at: null
-    commit: null
+    status: done
+    started_at: "2026-05-20T00:45:00Z"
+    completed_at: "2026-05-20T01:00:00Z"
+    commit: 53f90f4
     notes: []
