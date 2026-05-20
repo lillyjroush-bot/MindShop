@@ -1,0 +1,304 @@
+# forge:meta
+#   generated_by: planning-and-task-breakdown
+#   generated_at: 2026-05-20T00:00:00Z
+#   depends_on: [CLAUDE.md]
+#   generated_from:
+#     CLAUDE.md: fac47250
+#   content_hash: see below
+
+tasks:
+
+  # ── Phase 1: Foundation ────────────────────────────────────────────────────
+
+  - id: T001
+    title: "Scaffold Expo project with tab navigator"
+    size: S
+    phase: 1
+    depends_on: []
+    skills: [design-system]
+    acceptance_criteria:
+      - Expo project boots in simulator with no errors
+      - Bottom tab bar shows 3 tabs: Saves, Review, Recap
+      - Each tab navigates to a placeholder screen
+      - Tab bar uses black/white active state (black bg, white text when active)
+    verification:
+      - App runs with `npx expo start`
+      - Tapping each tab switches screens
+      - Active tab has black background, inactive tabs are white
+    files_likely_affected:
+      - App.js / app entry point (new)
+      - screens/SavesScreen.js (placeholder)
+      - screens/ReviewScreen.js (placeholder)
+      - screens/RecapScreen.js (placeholder)
+    status: pending
+    started_at: null
+    completed_at: null
+    commit: null
+    notes: []
+
+  - id: T002
+    title: "Design system constants"
+    size: XS
+    phase: 1
+    depends_on: [T001]
+    skills: [design-system]
+    acceptance_criteria:
+      - Single file exports all colors, typography sizes, and border radii from spec
+      - All subsequent screens import from this file — no hardcoded hex values elsewhere
+    verification:
+      - constants/theme.js exists with all color, type, and radius values from CLAUDE.md
+    files_likely_affected:
+      - constants/theme.js (new)
+    status: pending
+    started_at: null
+    completed_at: null
+    commit: null
+    notes: []
+
+  - id: T003
+    title: "Sample data and data model"
+    size: XS
+    phase: 1
+    depends_on: [T001]
+    skills: []
+    acceptance_criteria:
+      - Sample data file exports the 6 items from spec with correct shape
+      - Default lists array exported: ['Home Refresh', 'For Me', 'Kitchen', 'Birthday Ideas']
+      - Data shape matches model: id, name, store, price, image, savedDate, list, verdict, notes
+    verification:
+      - data/sampleData.js exists and imports cleanly
+    files_likely_affected:
+      - data/sampleData.js (new)
+    status: pending
+    started_at: null
+    completed_at: null
+    commit: null
+    notes: []
+
+  # ── Phase 2: Saves Screen ──────────────────────────────────────────────────
+
+  - id: T004
+    title: "Product card component"
+    size: S
+    phase: 2
+    depends_on: [T002, T003]
+    skills: [design-system, accessibility]
+    acceptance_criteria:
+      - Card shows 88x88 image (square, no border radius), name, store · list, price, save date
+      - Name truncates at 2 lines
+      - Verdict badge shows in top-right corner with correct colors (yes/no/maybe/null)
+      - Optional notes preview shown in italic if present
+      - Tapping card triggers onPress prop
+    verification:
+      - Card renders correctly with sample item data
+      - Badge shows correct color and symbol for each verdict state
+      - null verdict shows no badge
+    files_likely_affected:
+      - components/ProductCard.js (new)
+    status: pending
+    started_at: null
+    completed_at: null
+    commit: null
+    notes: []
+
+  - id: T005
+    title: "List filter pills"
+    size: S
+    phase: 2
+    depends_on: [T002, T003]
+    skills: [design-system, interaction-patterns]
+    acceptance_criteria:
+      - Horizontal scrollable row shows "All" pill + one pill per list
+      - Active pill is black bg with white text; inactive is gray2 border with gray4 text
+      - "+" circle button at end opens New List modal (wired in T008)
+      - Selecting a pill filters the item list to that list only
+      - "All" shows all items
+    verification:
+      - Tapping each pill updates active state visually
+      - Filter correctly shows/hides items by list
+    files_likely_affected:
+      - components/FilterPills.js (new)
+    status: pending
+    started_at: null
+    completed_at: null
+    commit: null
+    notes: []
+
+  - id: T006
+    title: "Saves screen with header and empty state"
+    size: M
+    phase: 2
+    depends_on: [T004, T005]
+    skills: [design-system, accessibility]
+    acceptance_criteria:
+      - Header shows "MindShop" (bold 22px), tagline "your mindful cart · {n} saves", and "+ Pin" button
+      - Filter pills render above item list
+      - Scrollable list of ProductCard components from sample data
+      - Empty state: bookmark icon + "Nothing pinned here yet" + Pin button when no items in selected list
+      - "+ Pin" and empty state Pin button both open Pin modal (wired in T007)
+    verification:
+      - Screen renders with all 6 sample items
+      - Filtering to a list with no items shows empty state
+      - Header count updates when items are added/removed
+    files_likely_affected:
+      - screens/SavesScreen.js (update placeholder)
+    status: pending
+    started_at: null
+    completed_at: null
+    commit: null
+    notes: []
+
+  # ── Phase 3: Modals ────────────────────────────────────────────────────────
+
+  - id: T007
+    title: "Pin a Product modal"
+    size: M
+    phase: 3
+    depends_on: [T005, T006]
+    skills: [design-system, interaction-patterns]
+    acceptance_criteria:
+      - Modal slides up from bottom
+      - Back arrow dismisses modal
+      - Fields: Name, Store, Price, Image URL (optional)
+      - List selector shows current lists as pills; "+ New List" dashed pill opens New List modal
+      - "Pin It" button (black, full width) adds item to state and closes modal
+      - New item appears immediately in Saves list
+    verification:
+      - Filling form and tapping "Pin It" adds item to list
+      - New item shows in correct list when filter is active
+      - Image URL field is optional — item still saves without it
+    files_likely_affected:
+      - components/PinModal.js (new)
+    status: pending
+    started_at: null
+    completed_at: null
+    commit: null
+    notes: []
+
+  - id: T008
+    title: "New List modal with symbol picker"
+    size: M
+    phase: 3
+    depends_on: [T006]
+    skills: [design-system, interaction-patterns]
+    acceptance_criteria:
+      - Modal slides up from bottom
+      - Name text input and symbol picker grid (8 symbols: — · ○ △ □ ◇ / ∞)
+      - Live preview pill updates as user types name and picks symbol
+      - "Create List" button disabled/faded until name is entered
+      - Creating list adds it to filter pills and closes modal
+    verification:
+      - Empty name keeps button disabled
+      - Created list appears in filter pills immediately
+      - Preview pill shows correct symbol and name in real time
+    files_likely_affected:
+      - components/NewListModal.js (new)
+    status: pending
+    started_at: null
+    completed_at: null
+    commit: null
+    notes: []
+
+  - id: T009
+    title: "Item Detail modal"
+    size: M
+    phase: 3
+    depends_on: [T004]
+    skills: [design-system, interaction-patterns]
+    acceptance_criteria:
+      - Modal slides up on card tap
+      - Shows full 280px product image with floating back arrow
+      - Displays store, save date, name, price (terracotta)
+      - Verdict selector (3 buttons) highlights active verdict
+      - Notes text input labeled "Notes to future you"
+      - "Save & Close" persists verdict + notes to item state and closes modal
+    verification:
+      - Tapping a verdict button highlights it and deselects others
+      - Saving updates the verdict badge on the card in the Saves list
+      - Notes saved and re-shown on next open
+    files_likely_affected:
+      - components/ItemDetailModal.js (new)
+    status: pending
+    started_at: null
+    completed_at: null
+    commit: null
+    notes: []
+
+  # ── Phase 4: Review + Recap ────────────────────────────────────────────────
+
+  - id: T010
+    title: "Review screen"
+    size: M
+    phase: 4
+    depends_on: [T003, T009]
+    skills: [design-system, interaction-patterns]
+    acceptance_criteria:
+      - Progress dots at top: one per item, terracotta when reviewed
+      - "{n} of {total}" counter shown
+      - Full-width 260px product image, store + date, name, price (terracotta)
+      - 3 verdict buttons: Still Want It / Over It / Not Sure (colored backgrounds)
+      - Tapping a verdict saves it and advances to next item
+      - Done state shown when all items reviewed: ✓ symbol + "See Recap" button
+    verification:
+      - Stepping through all items reaches done state
+      - Verdicts set here are reflected in Saves badges and Recap stats
+      - Progress dots fill as each item is reviewed
+    files_likely_affected:
+      - screens/ReviewScreen.js (update placeholder)
+    status: pending
+    started_at: null
+    completed_at: null
+    commit: null
+    notes: []
+
+  - id: T011
+    title: "Recap screen"
+    size: M
+    phase: 4
+    depends_on: [T003, T010]
+    skills: [design-system]
+    acceptance_criteria:
+      - Month label shown (uppercase, gray, letter-spaced)
+      - 2x2 stat grid: Still Want (green) / Over It (red) / Not Sure (tan) / Unreviewed (gray)
+      - Each stat cell shows symbol, count, and label
+      - Dark card shows: "Still in consideration" total $, divider, Removed $, total saves count
+      - "By List" section: each list shows name, item count, total $
+      - All numbers derived live from item state — no hardcoded values
+    verification:
+      - Reviewing items in Review screen updates Recap counts correctly
+      - Removed $ reflects sum of items marked "Over It"
+      - By List totals match items in each list
+    files_likely_affected:
+      - screens/RecapScreen.js (update placeholder)
+    status: pending
+    started_at: null
+    completed_at: null
+    commit: null
+    notes: []
+
+  # ── Phase 5: Polish ────────────────────────────────────────────────────────
+
+  - id: T012
+    title: "Custom SVG tab icons"
+    size: S
+    phase: 5
+    depends_on: [T001]
+    skills: [design-system]
+    acceptance_criteria:
+      - Bookmark icon for Saves tab
+      - Document + ✓/✕ circles icon for Review tab
+      - Circular arrows icon for Recap tab
+      - Icons are white on active (black bg) tab, gray3 on inactive
+      - All icons use stroke-width 1.5, no fill, consistent visual weight
+    verification:
+      - All 3 icons render in tab bar without pixelation
+      - Active/inactive color switching works on tab press
+    files_likely_affected:
+      - components/icons/SavesIcon.js (new)
+      - components/icons/ReviewIcon.js (new)
+      - components/icons/RecapIcon.js (new)
+    status: pending
+    started_at: null
+    completed_at: null
+    commit: null
+    notes: []
