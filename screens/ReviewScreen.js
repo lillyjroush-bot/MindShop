@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import {
-  View, Text, Image, TouchableOpacity, ScrollView,
-  StyleSheet, SafeAreaView,
+  View, Text, Image, TouchableOpacity, ScrollView, StyleSheet,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors, radii } from '../constants/theme';
-import { SAMPLE_ITEMS } from '../data/sampleData';
 
 const VERDICT_OPTIONS = [
   { value: 'yes',   label: 'Still Want It', symbol: '✓', bg: '#eaf4ef', text: '#2d6a4f' },
@@ -12,9 +10,8 @@ const VERDICT_OPTIONS = [
   { value: 'no',    label: 'Over It',        symbol: '✕', bg: '#fdecea', text: '#9b2c2c' },
 ];
 
-export default function ReviewScreen() {
-  const [items, setItems] = useState(SAMPLE_ITEMS);
-  const [currentIndex, setCurrentIndex] = useState(0);
+export default function ReviewScreen({ items, setItems }) {
+  const currentIndex = 0;
 
   const reviewed = items.filter((i) => i.verdict !== null);
   const unreviewed = items.filter((i) => i.verdict === null);

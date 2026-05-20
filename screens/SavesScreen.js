@@ -1,19 +1,16 @@
 import { useState } from 'react';
 import {
-  View, Text, ScrollView, TouchableOpacity,
-  StyleSheet, SafeAreaView,
+  View, Text, ScrollView, TouchableOpacity, StyleSheet,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors, typography, radii } from '../constants/theme';
-import { SAMPLE_ITEMS, DEFAULT_LISTS } from '../data/sampleData';
 import ProductCard from '../components/ProductCard';
 import FilterPills from '../components/FilterPills';
 import PinModal from '../components/PinModal';
 import NewListModal from '../components/NewListModal';
 import ItemDetailModal from '../components/ItemDetailModal';
 
-export default function SavesScreen() {
-  const [items, setItems] = useState(SAMPLE_ITEMS);
-  const [lists, setLists] = useState(DEFAULT_LISTS);
+export default function SavesScreen({ items, setItems, lists, setLists }) {
   const [activeList, setActiveList] = useState('All');
   const [pinModalVisible, setPinModalVisible] = useState(false);
   const [newListModalVisible, setNewListModalVisible] = useState(false);

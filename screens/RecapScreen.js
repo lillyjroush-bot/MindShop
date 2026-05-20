@@ -1,8 +1,8 @@
 import {
-  View, Text, ScrollView, StyleSheet, SafeAreaView,
+  View, Text, ScrollView, StyleSheet,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors } from '../constants/theme';
-import { SAMPLE_ITEMS, DEFAULT_LISTS } from '../data/sampleData';
 
 const MONTH = new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }).toUpperCase();
 
@@ -13,10 +13,7 @@ const STAT_CONFIG = [
   { verdict: null,    label: 'Unreviewed',  symbol: '·', bg: colors.gray1, text: colors.gray4 },
 ];
 
-export default function RecapScreen() {
-  // In production this would come from shared state; using sample data for now
-  const items = SAMPLE_ITEMS;
-  const lists = DEFAULT_LISTS;
+export default function RecapScreen({ items, lists }) {
 
   const totalValue = items.reduce((sum, i) => sum + i.price, 0);
   const removedValue = items
@@ -103,7 +100,7 @@ const styles = StyleSheet.create({
   },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 16 },
   statCell: {
-    width: '47%', borderRadius: 14, padding: 16,
+    flex: 1, minWidth: '45%', borderRadius: 14, padding: 16,
     alignItems: 'center', gap: 4,
   },
   statSymbol: { fontSize: 22 },
