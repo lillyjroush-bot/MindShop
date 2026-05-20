@@ -30,10 +30,10 @@ tasks:
       - screens/SavesScreen.js (placeholder)
       - screens/ReviewScreen.js (placeholder)
       - screens/RecapScreen.js (placeholder)
-    status: pending
-    started_at: null
-    completed_at: null
-    commit: null
+    status: done
+    started_at: "2026-05-20T00:00:00Z"
+    completed_at: "2026-05-20T00:10:00Z"
+    commit: 966dc57
     notes: []
 
   - id: T002
@@ -49,10 +49,10 @@ tasks:
       - constants/theme.js exists with all color, type, and radius values from CLAUDE.md
     files_likely_affected:
       - constants/theme.js (new)
-    status: pending
-    started_at: null
-    completed_at: null
-    commit: null
+    status: done
+    started_at: "2026-05-20T00:11:00Z"
+    completed_at: "2026-05-20T00:20:00Z"
+    commit: 95fd8a0
     notes: []
 
   - id: T003
@@ -69,10 +69,10 @@ tasks:
       - data/sampleData.js exists and imports cleanly
     files_likely_affected:
       - data/sampleData.js (new)
-    status: pending
-    started_at: null
-    completed_at: null
-    commit: null
+    status: done
+    started_at: "2026-05-20T00:11:00Z"
+    completed_at: "2026-05-20T00:20:00Z"
+    commit: 95fd8a0
     notes: []
 
   # ── Phase 2: Saves Screen ──────────────────────────────────────────────────
