@@ -6,6 +6,7 @@ export default function FilterPills({ lists, activeList, onSelectList, onAddList
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
+      style={styles.scrollView}
       contentContainerStyle={styles.container}
     >
       {/* "All" pill */}
@@ -57,6 +58,10 @@ function Pill({ label, active, onPress }) {
 }
 
 const styles = StyleSheet.create({
+  scrollView: {
+    flexGrow: 0,
+    flexShrink: 0,
+  },
   container: {
     paddingHorizontal: 16,
     paddingVertical: 12,

@@ -55,22 +55,24 @@ export default function ProductCard({ item, onPress }) {
 const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
-    backgroundColor: colors.gray1,
+    backgroundColor: colors.white,
     borderRadius: radii.card,
     marginHorizontal: 16,
-    marginBottom: 10,
+    marginBottom: 8,
     overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: colors.gray2,
   },
   image: {
-    width: 88,
-    height: 88,
+    width: 90,
+    height: 90,
     borderRadius: 0,
-    backgroundColor: colors.gray2,
+    backgroundColor: colors.gray1,
   },
   content: {
     flex: 1,
     paddingHorizontal: 12,
-    paddingVertical: 10,
+    paddingVertical: 12,
     justifyContent: 'center',
   },
   name: {

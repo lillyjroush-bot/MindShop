@@ -135,8 +135,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-    paddingTop: 16,
-    paddingBottom: 4,
+    paddingTop: 12,
+    paddingBottom: 0,
   },
   appTitle: {
     ...typography.appTitle,
