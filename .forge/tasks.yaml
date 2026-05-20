@@ -95,10 +95,10 @@ tasks:
       - null verdict shows no badge
     files_likely_affected:
       - components/ProductCard.js (new)
-    status: pending
-    started_at: null
-    completed_at: null
-    commit: null
+    status: done
+    started_at: "2026-05-20T00:25:00Z"
+    completed_at: "2026-05-20T00:30:00Z"
+    commit: pending
     notes: []
 
   - id: T005
@@ -118,10 +118,10 @@ tasks:
       - Filter correctly shows/hides items by list
     files_likely_affected:
       - components/FilterPills.js (new)
-    status: pending
-    started_at: null
-    completed_at: null
-    commit: null
+    status: done
+    started_at: "2026-05-20T00:30:00Z"
+    completed_at: "2026-05-20T00:35:00Z"
+    commit: pending
     notes: []
 
   - id: T006
